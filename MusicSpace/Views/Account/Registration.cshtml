@@ -1,0 +1,34 @@
+﻿@model RegistrationViewModel
+
+<div class="container__primary">
+    <div class="title__primary">
+        <label class="">Sing up to MusicSpace</label>
+    </div>
+    <div class="form__primary">
+        <form asp-area="" asp-controller="Account" asp-action="Registration" method="post" asp-route-returnUrl="@ViewBag.returnUrl">
+            <div>
+                <label class="title__secondary" asp-for="UserEmail"></label>
+                <input class="input__primary" asp-for="UserEmail" />
+                <span asp-validation-for="UserEmail"></span>
+            </div>
+            <div>
+                <label class="title__secondary" asp-for="UserName"></label>
+                <input class="input__primary" asp-for="UserName" />
+                <span asp-validation-for="UserName"></span>
+            </div>
+            <div>
+                <label class="title__secondary" asp-for="Password"></label>
+                <input class="input__primary" asp-for="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div>
+                <label class="title__secondary" asp-for="PasswordConfirmed"></label>
+                <input class="input__primary" asp-for="PasswordConfirmed" />
+                <span asp-validation-for="PasswordConfirmed"></span>
+            </div>
+            <div>
+                <input class="button__primary" type="submit" value="Регистрация" />
+            </div>
+        </form>
+    </div>
+</div>

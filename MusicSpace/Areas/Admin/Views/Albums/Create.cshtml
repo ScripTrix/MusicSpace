@@ -1,0 +1,42 @@
+﻿@model AlbumCreateViewModel
+
+@{
+    string strTitle = "Добавление альбома";
+    ViewBag.Title = strTitle;
+}
+<a asp-area="Admin" asp-controller="Home" asp-action="Index">Панель администратора</a>
+<form asp-area="Admin" asp-controller="Albums" asp-action="Create" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly">
+    </div>
+    <div>
+        <label asp-for="Album.Title"></label>
+        <input asp-for="Album.Title" />
+        <span asp-validation-for="Album.Title"></span>
+    </div>
+    <div>
+        <label asp-for="Album.CoverFile"></label>
+        <input asp-for="Album.CoverFile" type="file" />
+        <span asp-validation-for="Album.CoverFile"></span>
+    </div>
+    <div>
+        <label asp-for="Album.ReleaseDate"></label>
+        <input asp-for="Album.ReleaseDate" />
+        <span asp-validation-for="Album.ReleaseDate"></span>
+    </div>
+    <div>
+        <label asp-for="Performers"></label>
+        <select id="Performers" asp-for="Performers" multiple>
+            <option>Выберите исполнителей</option>
+            @foreach (var item in Model.Performers)
+            {
+                <option value="@(item.Id)">
+                    @Html.DisplayFor(perf => item.PerformerName)
+                </option>
+            }
+        </select>
+        <span asp-validation-for="Performers"></span>
+    </div>
+    <div>
+        <input type="submit" value="Добавить" />
+    </div>
+</form>

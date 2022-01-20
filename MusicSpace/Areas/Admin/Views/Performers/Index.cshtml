@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Performer>
+@{
+    string strTitle = "Список исполнителей";
+    ViewBag.Title = strTitle;
+}
+<a asp-area="Admin" asp-controller="Home" asp-action="Index">Панель администратора</a>
+<a asp-area="Admin" asp-controller="Performers" asp-action="Create">Добавить</a>
+<div class="table__container">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AvatarPath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PerformerName)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/uploads/performers/@(Html.DisplayFor(modelItem => item.AvatarPath))" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PerformerName)
+                        </td>
+                        <td>
+                            <div class="table__link">
+                                <a asp-area="Admin" asp-controller="Performers" asp-action="Edit" asp-route-id="@item.Id">Изменить</a>
+                                <a asp-area="Admin" asp-controller="Performers" asp-action="Details" asp-route-id="@item.Id">Подробнее</a>
+                                <a asp-area="Admin" asp-controller="Performers" asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

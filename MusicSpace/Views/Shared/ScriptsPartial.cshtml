@@ -1,0 +1,22 @@
+﻿<!--Подключаем файл JS со скриптами-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text__one.indexOf(text__two) != -1)
+                return true;
+        }
+        $("#Search".keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            })
+        }))
+    })
+</script>
+<script src="~/js/main.js"></script>

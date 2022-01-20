@@ -1,0 +1,50 @@
+﻿@model Performer
+
+@{
+    string strTitle = "Удаление исполнителя";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <a asp-area="Admin" asp-controller="Home" asp-action="Index">Панель администратора</a>
+    <div class="table__container">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AvatarPath)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PerformerName)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/uploads/performers/@(Html.DisplayFor(modelItem => Model.AvatarPath))" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.PerformerName)
+                        </td>
+                        <td>
+                            <div class="table__link">
+                                <a asp-area="Admin" asp-controller="Performers" asp-action="Edit" asp-route-id="@Model.Id">Изменить</a>
+                                <a asp-area="Admin" asp-controller="Performers" asp-action="Details" asp-route-id="@Model.Id">Подробнее</a>
+                                <a asp-area="Admin" asp-controller="Performers" asp-action="Delete" asp-route-id="@Model.Id">Удалить</a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+
+    <form asp-area="Admin" asp-controller="Performers" asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Удалить" />
+    </form>
+    <a asp-area="Admin" asp-controller="Performers" asp-action="Index">Вернуться к списку</a>
+</div>

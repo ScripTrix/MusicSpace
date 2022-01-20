@@ -1,0 +1,30 @@
+﻿@model LoginViewModel
+
+
+<div class="container__primary">
+    <div class="title__primary">
+        <label class="">Login in to MusicSpace</label>
+    </div>
+    <div class="form__primary">
+        <form class="container__primary" asp-area="" asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewBag.returnUrl">
+            <div>
+                <label class="title__secondary" asp-for="UserName"></label>
+                <input class="input__primary" asp-for="UserName" />
+                <span asp-validation-for="UserName"></span>
+            </div>
+            <div>
+                <label class="title__secondary" asp-for="Password"></label>
+                <input class="input__primary" asp-for="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <label class="title__secondary" asp-for="RememberMe"></label>
+                <input type="checkbox" asp-for="RememberMe" />
+                <span asp-validation-for="RememberMe"></span>
+            </div>
+            <div>
+                <input class="button__primary" type="submit" value="Войти" />
+            </div>
+        </form>
+    </div>
+</div>

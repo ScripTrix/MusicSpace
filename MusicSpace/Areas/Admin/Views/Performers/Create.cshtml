@@ -1,0 +1,35 @@
+﻿@model Performer
+
+@{
+    string strTitle = "Добавление исполнителя";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <form class="form__primary" asp-area="Admin" asp-controller="Performers" asp-action="Create" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly">
+        </div>
+        <div>
+            <label class="title__secondary" asp-for="PerformerName"></label>
+            <input class="input__primary" asp-for="PerformerName"/>
+            <span asp-validation-for="PerformerName"></span>
+        </div>
+        <div>
+            <label class="title__secondary" asp-for="AvatarFile"></label>
+            <input class="input__primary" asp-for="AvatarFile" type="file"/>
+            <span asp-validation-for="AvatarFile"></span>
+        </div>
+        <div>
+            <input class="button__primary" type="submit" value="Добавить"/>
+        </div>
+    </form>
+    <a class="button__primary" asp-area="Admin" asp-controller="Performers" asp-action="Index">Вернуться к списку</a>
+</div>
+
+
+<!--
+    Id?
+    PerformerName
+    AvatarPath
+
+-->

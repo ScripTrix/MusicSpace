@@ -1,0 +1,71 @@
+﻿@model UserHomeViewModel
+@{
+    string strTitle = User.Identity.Name;
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <a class="button__primary" asp-area="Admin" asp-controller="Home" asp-action="Index">Панель администратора</a>
+    <form asp-area="" asp-controller="Account" asp-action="Logout">
+        <input class="button__primary" type="submit" value="Выйти" />
+    </form>
+    <div id="albums">
+        @foreach (var item in Model.UserAlbums)
+        {
+            <div class="album">
+                <div class="album__cover">
+                    <img src="~/uploads/covers/@item.CoverPath" />
+                </div>
+                <div class="album__info">
+                    <div class="album__title">
+                        <label>@item.Title</label>
+                    </div>
+                    <div class="album__performers">
+                        @for (int i = 0; i < item.AlbumPerformers.Count(); i++)
+                        {
+                            <a asp-area="" asp-controller="" asp-action="">@item.AlbumPerformers.ElementAt(i).Performer.PerformerName</a>
+                            @if (i + 1 < item.AlbumPerformers.Count())
+                            {
+                                <p class="deliminer">,</p>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div id="songs">
+        @foreach (var item in Model.UserSongs)
+        {
+        <div class="song">
+            <audio id="@item.Id" style="display: none;">
+                <source src="~/uploads/songs/@item.SongPath" type="audio/mpeg">
+            </audio>
+            <div class="song__col">
+                <div class="song__cover">
+                    <img src="~/uploads/covers/@(item.CoverPath)" />
+                </div>
+                <div class="song__info">
+                    <div class="song__title">
+                        <label>@item.Title</label>
+                    </div>
+                    <div class="song__performers">
+                        @foreach (var sPerformer in item.SongPerformers)
+                        {
+                            <a asp-area="" asp-controller="" asp-action="" class="song__performer">@sPerformer.Performer.PerformerName</a>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="song__col">
+                <div class="song__adding">
+                    <a asp-area="User" asp-controller="Home" asp-action="Adding" asp-route-id="@item.Id" asp-route-returnUrl="/User/Index">+</a>
+                </div>
+                <div class="song__duration">
+                    <label>0:00</label>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

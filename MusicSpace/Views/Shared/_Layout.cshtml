@@ -1,0 +1,52 @@
+﻿<!DOCTYPE HTML>
+<html translate="no">
+<head>
+    @await Html.PartialAsync("MetatagsPartial")
+    @await Html.PartialAsync("CssPartial")
+</head>
+<body>
+    <div class="wrapper">
+
+        @await Html.PartialAsync("HeaderPartial")
+
+        <div class="content">
+            <div class="container">
+                @RenderBody()
+            </div>
+        </div>
+
+        @await Html.PartialAsync("FooterPartial")
+
+        <div id="player">
+            <div class="container__primary">
+                <div id="currentTime">
+                    <p>0:00</p>
+                </div>
+                <div id="player__control__container">
+                    <div id="song__info">
+                        <div id="label">
+                            <p>Текущая песня</p>
+                        </div>
+                        <div id="song__title">
+                            <p>Не выбрана</p>
+                        </div>
+                        <div id="song__slider">
+                            <div id="slider">
+                                <input type="range" min="0" max="100" value="0"/>
+                            </div>
+                            <div id="volume__slider">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="duration">
+                    <p>0:00</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @await Html.PartialAsync("ScriptsPartial")
+</body>
+</html>

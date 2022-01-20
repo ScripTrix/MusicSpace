@@ -1,0 +1,60 @@
+﻿@model SongCreateViewModel
+
+@{
+    string strTitle = "Добавление песни";
+    ViewBag.Title = strTitle;
+}
+<a asp-area="Admin" asp-controller="Home" asp-action="Index">Панель администратора</a>
+<form asp-area="Admin" asp-controller="Songs" asp-action="Create" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly">
+    </div>
+    <div>
+        <label asp-for="Song.Title"></label>
+        <input asp-for="Song.Title" />
+        <span asp-validation-for="Song.Title"></span>
+    </div>
+    <div>
+        <label asp-for="Song.CoverFile"></label>
+        <input asp-for="Song.CoverFile" type="file" />
+        <span asp-validation-for="Song.CoverFile"></span>
+    </div>
+    <div>
+        <label asp-for="Song.SongFile"></label>
+        <input asp-for="Song.SongFile" type="file" />
+        <span asp-validation-for="Song.SongFile"></span>
+    </div>
+    <div>
+        <label asp-for="Song.ReleaseDate"></label>
+        <input asp-for="Song.ReleaseDate" />
+        <span asp-validation-for="Song.ReleaseDate"></span>
+    </div>
+    <div>
+        <label asp-for="Albums"></label>
+        <select id="Albums" asp-for="Albums">
+            <option>Выберите альбом</option>
+            @foreach (var item in Model.Albums)
+            {
+                <option value="@(item.Id)">
+                    @Html.DisplayFor(album => item.Title)
+                </option>
+            }
+        </select>
+        <span asp-validation-for="Albums"></span>
+    </div>
+    <div>
+        <label asp-for="Performers"></label>
+        <select id="Performers" asp-for="Performers" multiple>
+            <option>Выберите исполнителей</option>
+            @foreach (var item in Model.Performers)
+            {
+                <option value="@(item.Id)">
+                    @Html.DisplayFor(perf => item.PerformerName)
+                </option>
+            }
+        </select>
+        <span asp-validation-for="Performers"></span>
+    </div>
+    <div>
+        <input type="submit" value="Добавить" />
+    </div>
+</form>

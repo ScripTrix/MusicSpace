@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ApplicationUser>
+@{
+    string strTitle = "Список пользователей";
+    ViewBag.Title = strTitle;
+}
+
+<a asp-area="Admin" asp-controller="Home" asp-action="Index">Панель администратора</a>
+<a asp-area="Admin" asp-controller="Users" asp-action="Create">Добавить</a>
+<table>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-area="Admin" asp-controller="Users" asp-action="Edit">Изменить</a>
+                <a asp-area="Admin" asp-controller="Users" asp-action="Details">Подробнее</a>
+                <a asp-area="Admin" asp-controller="Users" asp-action="Delete">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WeeklyChart>
+
+@{
+    string strTitle = "Charts";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <div>
+        <select>
+            <option checked>Выбрать дату</option>
+            @foreach (var item in Model)
+            {
+                <option>@item.ReleaseDate</option>
+            }
+        </select>
+        <input type="submit" value="Получить" class="button__primary"/>
+    </div>
+    <div id="songs">
+        @for (int i = 0; i < Model.ElementAt(0).ChartSongs.Count(); i++)
+        {
+            <div class="song">
+                <audio id="@Model.ElementAt(0).ChartSongs.ElementAt(i).Song.Id" style="display: none;">
+                    <source src="~/uploads/songs/@Model.ElementAt(0).ChartSongs.ElementAt(i).Song.SongPath" type="audio/mpeg">
+                </audio>
+                <div class="song__col">
+                    <div class="song__cover">
+                        <img src="~/uploads/covers/@(Model.ElementAt(0).ChartSongs.ElementAt(i).Song.CoverPath)" />
+                    </div>
+                    <div class="song__info">
+                        <div class="song__title">
+                            <label>@Model.ElementAt(0).ChartSongs.ElementAt(i).Song.Title</label>
+                        </div>
+                        <div class="song__performers">
+                            @foreach (var sPerformer in Model.ElementAt(0).ChartSongs.ElementAt(i).Song.SongPerformers)
+                            {
+                                <a asp-area="" asp-controller="" asp-action="" class="song__performer">@sPerformer.Performer.PerformerName</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="song__col">
+                    <div class="song__adding">
+                        <a asp-area="User" asp-controller="Home" asp-action="Adding" asp-route-id="@Model.ElementAt(0).ChartSongs.ElementAt(i).Song.Id" asp-route-returnUrl="/Chart/">+</a>
+                    </div>
+                    <div class="song__duration">
+                        <label>0:00</label>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

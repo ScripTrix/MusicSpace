@@ -1,0 +1,20 @@
+﻿
+@{ 
+    string strTitle = "Панель администратора";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h1>@strTitle</h1>
+    <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+        <input class="button__primary" type="submit" value="Выйти" />
+    </form>
+    <div id="admin__panel">
+        <a class="button__primary" asp-area="Admin" asp-controller="Performers" asp-action="Index">Исполнители</a>
+        <a class="button__primary" asp-area="Admin" asp-controller="Songs" asp-action="Index">Композиции</a>
+        <a class="button__primary" asp-area="Admin" asp-controller="Albums" asp-action="Index">Альбомы</a>
+        <a class="button__primary" asp-area="Admin" asp-controller="Users" asp-action="Index">Пользователи</a>
+        <a class="button__primary" asp-area="Admin" asp-controller="Charts" asp-action="Index">Недельные чарты</a>
+    </div>
+</div>
+

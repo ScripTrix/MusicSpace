@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Album>
+
+@{
+    string strTitle = "Список альбомов";
+    ViewBag.Title = strTitle;
+}
+<a asp-area="Admin" asp-controller="Home" asp-action="Index">Панель администратора</a>
+<a asp-area="Admin" asp-controller="Albums" asp-action="Create">Добавить</a>
+<div class="table__container">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CoverPath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AlbumPerformers)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReleaseDate)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/uploads/covers/@(Html.DisplayFor(modelItem => item.CoverPath))" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            <div>
+                                @foreach (var songPerformers in item.AlbumPerformers)
+                                {
+                                    <span>@Html.DisplayFor(modelItem => songPerformers.Performer.PerformerName)</span>
+                                }
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReleaseDate)
+                        </td>
+                        <td>
+                            <div class="table__link">
+                                <a asp-area="Admin" asp-controller="Albums" asp-action="Edit" asp-route-id="@item.Id">Изменить</a>
+                                <a asp-area="Admin" asp-controller="Albums" asp-action="Details" asp-route-id="@item.Id">Подробнее</a>
+                                <a asp-area="Admin" asp-controller="Albums" asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

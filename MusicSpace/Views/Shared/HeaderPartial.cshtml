@@ -1,0 +1,43 @@
+﻿<header class="header">
+    <div class="container">
+        <div class="header__body">
+            <div class="header__title">
+                <a href="/" class="header__logo">
+                    <img src="~/images/logo.ico" alt="" />
+                </a>
+                <h1>@Config.ProjectName</h1>
+            </div>
+            <div class="header__burger">
+                <span></span>
+            </div>
+            <nav class="header__menu">
+                <ul class="header__list">
+                    <li>
+                        <a href="/" class="header__link">Home</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Chart" asp-action="Index" class="header__link">Charts</a>
+                    </li>
+                    <li>
+                        <a href="/" class="header__link">Contacts</a>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a asp-area="User" asp-controller="Home" asp-action="Index" class="header__link">@User.Identity.Name</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="Account" asp-action="Login" class="header__link">Log In</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Account" asp-action="Registration" class="header__link">Sign Up</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
