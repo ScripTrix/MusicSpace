@@ -3,7 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicSpace", "MusicSpace\MusicSpace.csproj", "{99BCA21D-85D5-4DC9-9949-021378EAB2D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicSpace", "MusicSpace\MusicSpace.csproj", "{99BCA21D-85D5-4DC9-9949-021378EAB2D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{C2980437-7E41-4D01-AEBF-50FEBF1C94A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Архитектура", "Архитектура", "{D06FC4A1-7340-4CFF-88AD-87C3D74EC752}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Desktop\ПЗ по Архитектуре Панченко А.П.docx = ..\..\..\Desktop\ПЗ по Архитектуре Панченко А.П.docx
+		..\..\..\Desktop\ПЗ по Архитектуре Панченко А.П.pdf = ..\..\..\Desktop\ПЗ по Архитектуре Панченко А.П.pdf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Базы данных", "Базы данных", "{6B36C9F8-D554-4D49-8386-8AB0F8D8F3AC}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Desktop\ПЗ по БД Панченко А.П.docx = ..\..\..\Desktop\ПЗ по БД Панченко А.П.docx
+		..\..\..\Desktop\ПЗ по БД Панченко А.П.pdf = ..\..\..\Desktop\ПЗ по БД Панченко А.П.pdf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Графическая часть (Общая)", "Графическая часть (Общая)", "{5E6C1B5D-17B3-4808-83F9-A1B3FAF3AF30}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Desktop\Оформленная общая граф часть.vsdx = ..\..\..\Desktop\Оформленная общая граф часть.vsdx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +37,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D06FC4A1-7340-4CFF-88AD-87C3D74EC752} = {C2980437-7E41-4D01-AEBF-50FEBF1C94A6}
+		{6B36C9F8-D554-4D49-8386-8AB0F8D8F3AC} = {C2980437-7E41-4D01-AEBF-50FEBF1C94A6}
+		{5E6C1B5D-17B3-4808-83F9-A1B3FAF3AF30} = {C2980437-7E41-4D01-AEBF-50FEBF1C94A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {26180668-9A05-4530-B535-5823FF817184}
